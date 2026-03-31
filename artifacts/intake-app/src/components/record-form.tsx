@@ -28,7 +28,6 @@ export const recordFormSchema = z.object({
   deviceSerialNumber: z.string().optional().nullable(),
   paymentMethod: z.string().optional().nullable(),
   notes: z.string().optional().nullable(),
-  remark: z.string().optional().nullable(),
   serviceDate: z.string().min(1, "Service date is required"),
   serviceTime: z.string().min(1, "Service time is required"),
 }).superRefine((data, ctx) => {
