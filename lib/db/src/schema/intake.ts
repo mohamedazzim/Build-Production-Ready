@@ -20,6 +20,7 @@ export const customerIntakeRecordsTable = pgTable(
     deviceSerialNumber: text("device_serial_number"),
     paymentMethod: text("payment_method"),
     notes: text("notes"),
+    remark: text("remark"),
     serviceDate: text("service_date").notNull(),
     serviceTime: text("service_time").notNull(),
     createdAt: timestamp("created_at", { withTimezone: true })
