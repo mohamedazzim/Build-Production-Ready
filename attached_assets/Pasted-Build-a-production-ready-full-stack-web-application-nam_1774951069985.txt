@@ -1,0 +1,438 @@
+Build a production-ready full-stack web application named:
+
+Customer Intake – Cartridge & Ink Shop Management System
+
+OBJECTIVE
+
+Create a real shop-counter intake system used daily to record customer service requests such as printer service, toner refill, laptop repair, photocopy services, and scanning.
+
+The application must store data permanently in a database and allow editing later including timestamps.
+
+TECH STACK REQUIREMENTS
+
+Frontend
+
+React.js
+Bootstrap 5
+Responsive layout
+Two-column professional intake form
+
+Backend
+
+Node.js
+Express.js
+
+Database
+
+PostgreSQL (primary)
+Fallback: SQLite if PostgreSQL unavailable
+
+Architecture
+
+MVC structure
+
+frontend/
+backend/
+models/
+controllers/
+routes/
+services/
+utils/
+
+Environment config support
+
+.env file
+
+SECURITY REQUIREMENTS
+
+Use:
+
+Helmet middleware
+CORS protection
+Input sanitization
+SQL injection prevention
+XSS prevention
+Validation middleware
+
+DATABASE DESIGN REQUIREMENTS
+
+Create table:
+
+customer_intake_records
+
+Fields:
+
+id (Primary Key)
+
+title
+first_name
+last_name
+
+mobile_number
+email
+
+customer_type
+address
+
+printer_make
+printer_model
+cartridge_toner_type
+
+service_type
+
+device_serial_number
+
+payment_method
+
+notes
+
+service_date
+service_time
+
+created_at
+updated_at
+
+IMPORTANT TIMESTAMP LOGIC
+
+System must support:
+
+Editable service_date
+Editable service_time
+
+Automatic:
+
+created_at
+updated_at
+
+Admin override allowed for service_date/time
+
+FORM FIELDS REQUIRED
+
+SECTION 1 — CUSTOMER DETAILS
+
+Title
+
+Mr
+Miss
+Ms
+Mrs
+
+First Name
+
+Last Name
+
+Mobile Number (required)
+
+Email ID (validated optional)
+
+Customer Type
+
+Home user
+Office user
+Business user
+
+Address
+
+SECTION 2 — PRINTER DETAILS
+
+Printer Make (Dropdown)
+
+HP
+Canon
+Epson
+Brother
+Samsung
+Other
+
+Printer Model
+
+Cartridge / Toner Type
+
+SECTION 3 — SERVICE DETAILS
+
+Service Opted (Dropdown)
+
+Photo Copy
+Ink Refill
+Toner Refill
+Printouts
+Scanning
+Lamination
+Computer/Laptop Repair
+Printer Repair
+
+CONDITIONAL FIELD REQUIREMENT
+
+If user selects:
+
+Computer/Laptop Repair
+
+THEN:
+
+Show field:
+
+Device Serial Number
+
+Make it REQUIRED
+
+Otherwise:
+
+Hide field
+
+But show it again when editing existing record
+
+SECTION 4 — PAYMENT DETAILS
+
+Payment Method
+
+Cash
+UPI
+Card
+
+SECTION 5 — NOTES
+
+Notes / Feedback textarea
+
+SECTION 6 — SERVICE TIMESTAMP ENTRY
+
+Editable:
+
+Service Date
+
+Service Time
+
+Auto-filled with current values by default
+
+FORM UI REQUIREMENTS
+
+Professional service-center style layout
+
+Two-column structure
+
+Blue header panel
+
+Display:
+
+Shop name
+Address
+Phone number
+Email
+Live running date-time clock
+
+Buttons:
+
+Save Entry
+Reset Form
+Edit Entry
+Delete Entry
+View Records
+Export CSV
+Export Excel
+Export JSON
+
+DASHBOARD PAGE REQUIREMENTS
+
+Create admin dashboard:
+
+View all saved records
+
+Search filters:
+
+mobile number
+customer name
+printer model
+service type
+date range
+
+Sort:
+
+latest first
+oldest first
+service date
+
+CRUD OPERATIONS REQUIRED
+
+Create record
+
+Update record
+
+Delete record
+
+Edit timestamps
+
+Edit any field later
+
+EDIT RECORD PAGE REQUIREMENT
+
+Load existing data
+
+Allow editing:
+
+ALL fields
+
+INCLUDING:
+
+service date
+service time
+serial number
+customer info
+
+EXPORT FEATURES REQUIRED
+
+Allow export:
+
+All records OR filtered records
+
+Formats:
+
+CSV
+Excel
+JSON
+
+SMART FEATURE REQUIREMENT
+
+If mobile number already exists:
+
+Auto-load previous customer info
+
+ANALYTICS PANEL REQUIRED
+
+Dashboard must display:
+
+Today total entries
+
+Weekly entries
+
+Monthly entries
+
+Most common service type
+
+SEARCH PERFORMANCE REQUIREMENT
+
+Use indexed search on:
+
+mobile_number
+service_type
+service_date
+
+API STRUCTURE REQUIREMENT
+
+Create REST APIs:
+
+POST /records
+
+GET /records
+
+GET /records/:id
+
+PUT /records/:id
+
+DELETE /records/:id
+
+GET /records/search
+
+FRONTEND COMPONENT STRUCTURE
+
+Create components:
+
+Header.jsx
+
+CustomerForm.jsx
+
+PrinterDetails.jsx
+
+ServiceDetails.jsx
+
+PaymentDetails.jsx
+
+NotesSection.jsx
+
+Dashboard.jsx
+
+RecordsTable.jsx
+
+EditRecord.jsx
+
+ExportButtons.jsx
+
+BACKEND STRUCTURE REQUIREMENT
+
+routes/
+
+records.routes.js
+
+controllers/
+
+records.controller.js
+
+models/
+
+records.model.js
+
+middleware/
+
+validation.middleware.js
+
+security.middleware.js
+
+VALIDATION REQUIREMENTS
+
+Mobile number:
+
+10 digits required
+
+Email:
+
+proper email format
+
+Serial number:
+
+required only if service_type = Computer/Laptop Repair
+
+UI EXPERIENCE REQUIREMENTS
+
+No page reload submission
+
+Success popup after save
+
+Error popup if validation fails
+
+Confirmation popup before delete
+
+DATA SAFETY REQUIREMENTS
+
+Never lose saved records
+
+Prevent duplicate submissions
+
+Validate before insert
+
+OPTIONAL ENHANCEMENT (IMPLEMENT IF POSSIBLE)
+
+Dark mode toggle
+
+Printer make dropdown editable by admin
+
+Service type dropdown editable by admin
+
+FINAL DELIVERY EXPECTATION
+
+Working full-stack application
+
+Professional UI matching shop intake system layout
+
+Persistent database storage
+
+Editable timestamps
+
+Conditional serial-number logic
+
+Searchable dashboard
+
+Export system
+
+Secure REST API backend
+
+Deployment-ready project structure
+
+README with run instructions
