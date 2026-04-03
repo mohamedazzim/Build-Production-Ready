@@ -53,7 +53,7 @@ export function Layout({ children }: { children: ReactNode }) {
               src="/cw-logo.jpg"
               alt="Cartridge World"
               className="object-fill drop-shadow-sm rounded-lg"
-              style={{ height: "64px", width: "141px" }}
+              style={{ height: "64px", width: "113px" }}
             />
           </div>
         </div>
