@@ -273,7 +273,7 @@ export function RecordForm({ initialValues, onSubmit, isSubmitting }: RecordForm
             </div>
             
             <div className="space-y-4">
-              <div className="grid grid-cols-2 gap-4 p-4 border rounded-md" style={{ backgroundColor: "#FFF9E0", borderColor: "#FFD400" }}>
+              <div className="grid grid-cols-2 gap-4 p-4 border rounded-md">
                 <div className="space-y-2">
                   <Label>Service Date</Label>
                   <Input type="date" {...form.register("serviceDate")} />
