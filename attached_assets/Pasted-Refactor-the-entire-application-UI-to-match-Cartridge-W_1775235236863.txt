@@ -1,0 +1,218 @@
+Refactor the entire application UI to match Cartridge World franchise branding while maintaining a professional enterprise dashboard appearance.
+
+Do NOT redesign layout structure.
+Only upgrade branding and styling.
+
+====================================================
+
+GLOBAL COLOR SYSTEM
+
+Primary brand yellow:
+#FFD400
+
+Primary action blue:
+#0B4CC2
+
+Accent green:
+#6CFF00
+
+Main background:
+#F7F8FA
+
+Card background:
+#FFFFFF
+
+Primary text:
+#000000
+
+====================================================
+
+HEADER DESIGN UPDATE
+
+Change header background color to:
+
+#FFD400
+
+Place logos:
+
+Top-left:
+Janus logo
+
+Top-right:
+Cartridge World logo
+
+Keep application title beside Janus logo.
+
+Header text color:
+black
+
+Keep clock widget aligned right.
+
+Ensure header height remains visually balanced.
+
+====================================================
+
+LOGIN PAGE UPDATE
+
+Change login page header bar to:
+
+#FFD400
+
+Keep login card white.
+
+Keep Sign In button blue:
+
+#0B4CC2
+
+Ensure inputs highlight yellow on focus:
+
+#FFD400
+
+====================================================
+
+NAVIGATION TABS UPDATE
+
+For tabs such as:
+
+New Intake
+Admin Dashboard
+
+Change active tab underline color to:
+
+#FFD400
+
+Keep inactive tabs neutral.
+
+====================================================
+
+FORM DESIGN UPDATE
+
+Apply branding to:
+
+Customer Details
+Service Details
+All form sections
+
+Add left border highlight:
+
+width: 4px
+color: #FFD400
+
+Input styling:
+
+Default border:
+light grey
+
+Focus border:
+#FFD400
+
+Labels:
+black
+
+====================================================
+
+BUTTON STYLE UPDATE
+
+Primary buttons:
+
+background:
+#0B4CC2
+
+text:
+white
+
+border radius:
+8px
+
+hover:
+slightly darker blue
+
+Secondary buttons:
+
+background:
+#FFD400
+
+text:
+black
+
+====================================================
+
+TABLE DESIGN UPDATE
+
+Table header background:
+
+#FFD400
+
+Header text:
+
+black
+
+Row hover highlight:
+
+#FFF6CC
+
+====================================================
+
+CARD DESIGN UPDATE
+
+Card background:
+
+white
+
+Border radius:
+
+12px
+
+Top border accent:
+
+#FFD400
+
+Add subtle shadow for depth.
+
+====================================================
+
+SIDEBAR (IF PRESENT)
+
+Sidebar background:
+
+#0B4CC2
+
+Sidebar text:
+
+white
+
+Active menu item:
+
+background:
+#FFD400
+
+text:
+black
+
+====================================================
+
+GLOBAL BACKGROUND RULE
+
+Do NOT apply yellow background to entire page.
+
+Main content background must remain:
+
+#F7F8FA
+
+====================================================
+
+CONSISTENCY REQUIREMENT
+
+Apply these updates across:
+
+Login page
+Dashboard
+Customer intake page
+Admin dashboard
+Tables
+Forms
+Navigation tabs
+Header
+Cards
+
+Ensure styles are reusable using global CSS variables or theme tokens.

@@ -62,19 +62,13 @@ export default function DashboardPage() {
   const { toast } = useToast();
   const queryClient = useQueryClient();
   
-  // Filters state
   const [search, setSearch] = useState("");
   const [dateFrom, setDateFrom] = useState("");
   const [dateTo, setDateTo] = useState("");
   const [sortBy, setSortBy] = useState<"latest" | "oldest" | "serviceDate">("latest");
-  
-  // Debounce search
   const [debouncedSearch, setDebouncedSearch] = useState("");
-  
-  // Delete state
   const [recordToDelete, setRecordToDelete] = useState<number | null>(null);
 
-  // Queries
   const { data: analytics, isLoading: analyticsLoading } = useGetAnalytics({
     query: { queryKey: getGetAnalyticsQueryKey() }
   });
@@ -111,7 +105,6 @@ export default function DashboardPage() {
     }
   };
 
-  // Export handlers
   const handleExport = (type: 'csv' | 'excel' | 'json') => {
     if (!records || records.length === 0) {
       toast({ title: "No data to export", variant: "destructive" });
@@ -130,7 +123,7 @@ export default function DashboardPage() {
       Payment: r.paymentMethod || '-'
     }));
 
-    const filename = `InkCraft_Records_${format(new Date(), "yyyy-MM-dd")}`;
+    const filename = `JanusImprints_Records_${format(new Date(), "yyyy-MM-dd")}`;
 
     if (type === 'csv') exportToCSV(exportData, filename);
     if (type === 'excel') exportToExcel(exportData, filename);
@@ -141,23 +134,31 @@ export default function DashboardPage() {
     <Layout>
       <div className="flex flex-col gap-8">
         
-        {/* Analytics Header */}
+        {/* Analytics Overview */}
         <div>
           <h2 className="text-2xl font-bold mb-4">Overview</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <Card className="bg-primary/5 border-primary/20">
+            {/* Today */}
+            <Card
+              className="rounded-xl border-0 shadow-md overflow-hidden"
+              style={{ borderTop: "4px solid #FFD400", boxShadow: "0 2px 12px rgba(11,76,194,0.09)" }}
+            >
               <CardHeader className="flex flex-row items-center justify-between pb-2">
                 <CardTitle className="text-sm font-medium text-muted-foreground">Today's Entries</CardTitle>
-                <Calendar className="w-4 h-4 text-primary" />
+                <Calendar className="w-4 h-4" style={{ color: "#0B4CC2" }} />
               </CardHeader>
               <CardContent>
                 {analyticsLoading ? <Skeleton className="h-8 w-16" /> : (
-                  <div className="text-3xl font-bold text-primary">{analytics?.todayCount || 0}</div>
+                  <div className="text-3xl font-bold" style={{ color: "#0B4CC2" }}>{analytics?.todayCount || 0}</div>
                 )}
               </CardContent>
             </Card>
             
-            <Card>
+            {/* This Week */}
+            <Card
+              className="rounded-xl border-0 shadow-md overflow-hidden"
+              style={{ borderTop: "4px solid #FFD400", boxShadow: "0 2px 12px rgba(11,76,194,0.09)" }}
+            >
               <CardHeader className="flex flex-row items-center justify-between pb-2">
                 <CardTitle className="text-sm font-medium text-muted-foreground">This Week</CardTitle>
                 <Activity className="w-4 h-4 text-muted-foreground" />
@@ -169,7 +170,11 @@ export default function DashboardPage() {
               </CardContent>
             </Card>
             
-            <Card>
+            {/* This Month */}
+            <Card
+              className="rounded-xl border-0 shadow-md overflow-hidden"
+              style={{ borderTop: "4px solid #FFD400", boxShadow: "0 2px 12px rgba(11,76,194,0.09)" }}
+            >
               <CardHeader className="flex flex-row items-center justify-between pb-2">
                 <CardTitle className="text-sm font-medium text-muted-foreground">This Month</CardTitle>
                 <Users className="w-4 h-4 text-muted-foreground" />
@@ -181,7 +186,11 @@ export default function DashboardPage() {
               </CardContent>
             </Card>
             
-            <Card className="bg-secondary/50 border-secondary">
+            {/* Top Service */}
+            <Card
+              className="rounded-xl border-0 shadow-md overflow-hidden"
+              style={{ borderTop: "4px solid #FFD400", boxShadow: "0 2px 12px rgba(11,76,194,0.09)" }}
+            >
               <CardHeader className="flex flex-row items-center justify-between pb-2">
                 <CardTitle className="text-sm font-medium text-muted-foreground">Top Service</CardTitle>
                 <FileText className="w-4 h-4 text-muted-foreground" />
@@ -198,8 +207,8 @@ export default function DashboardPage() {
         </div>
 
         {/* Data Table Section */}
-        <Card className="shadow-md">
-          <CardHeader className="border-b bg-muted/20">
+        <Card className="shadow-md rounded-xl overflow-hidden border-0" style={{ boxShadow: "0 2px 16px rgba(11,76,194,0.10)" }}>
+          <CardHeader className="border-b" style={{ backgroundColor: "#FFF9E0" }}>
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
               <CardTitle>Intake Records</CardTitle>
               <div className="flex flex-wrap items-center gap-2">
@@ -211,7 +220,6 @@ export default function DashboardPage() {
                     value={search}
                     onChange={(e) => {
                       setSearch(e.target.value);
-                      // Simple debounce
                       setTimeout(() => setDebouncedSearch(e.target.value), 500);
                     }}
                   />
@@ -241,7 +249,10 @@ export default function DashboardPage() {
                 </Button>
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button variant="secondary" className="ml-auto">
+                    <Button
+                      className="ml-auto font-semibold text-black"
+                      style={{ backgroundColor: "#FFD400", borderColor: "#FFD400" }}
+                    >
                       <Download className="w-4 h-4 mr-2" />
                       Export
                     </Button>
@@ -265,12 +276,12 @@ export default function DashboardPage() {
             <div className="overflow-x-auto">
               <Table>
                 <TableHeader>
-                  <TableRow className="bg-muted/50">
-                    <TableHead className="w-[100px]">ID / Date</TableHead>
-                    <TableHead>Customer</TableHead>
-                    <TableHead>Service</TableHead>
-                    <TableHead>Device / Printer</TableHead>
-                    <TableHead className="text-right">Actions</TableHead>
+                  <TableRow style={{ backgroundColor: "#FFD400" }} className="hover:bg-[#FFD400]">
+                    <TableHead className="w-[100px] font-bold text-black">ID / Date</TableHead>
+                    <TableHead className="font-bold text-black">Customer</TableHead>
+                    <TableHead className="font-bold text-black">Service</TableHead>
+                    <TableHead className="font-bold text-black">Device / Printer</TableHead>
+                    <TableHead className="text-right font-bold text-black">Actions</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -292,7 +303,13 @@ export default function DashboardPage() {
                     </TableRow>
                   ) : (
                     records?.map((record) => (
-                      <TableRow key={record.id} className="group hover:bg-muted/30 transition-colors">
+                      <TableRow
+                        key={record.id}
+                        className="group transition-colors cursor-default"
+                        style={{ transition: "background-color 0.15s" }}
+                        onMouseEnter={e => (e.currentTarget.style.backgroundColor = "#FFF6CC")}
+                        onMouseLeave={e => (e.currentTarget.style.backgroundColor = "")}
+                      >
                         <TableCell>
                           <div className="font-medium">#{record.id}</div>
                           <div className="text-xs text-muted-foreground">
@@ -306,7 +323,13 @@ export default function DashboardPage() {
                           <div className="text-sm text-muted-foreground">{record.mobileNumber}</div>
                         </TableCell>
                         <TableCell>
-                          <Badge variant="secondary" className="mb-1">{record.serviceType}</Badge>
+                          <Badge
+                            variant="secondary"
+                            className="mb-1 font-semibold"
+                            style={{ backgroundColor: "#FFD400", color: "#000", border: "none" }}
+                          >
+                            {record.serviceType}
+                          </Badge>
                           {record.paymentMethod && <div className="text-xs text-muted-foreground mt-1">Pay: {record.paymentMethod}</div>}
                         </TableCell>
                         <TableCell>
@@ -356,7 +379,7 @@ export default function DashboardPage() {
           <AlertDialogHeader>
             <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
             <AlertDialogDescription>
-              This action cannot be undone. This will permanently delete the intake record
+              This action cannot be undone. This will permanently delete intake record
               #{recordToDelete} from the database.
             </AlertDialogDescription>
           </AlertDialogHeader>

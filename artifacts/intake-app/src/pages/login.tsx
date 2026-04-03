@@ -36,38 +36,61 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-[100dvh] flex flex-col bg-background">
-      {/* Header */}
-      <header className="bg-primary text-primary-foreground shadow-md">
-        <div className="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-          <div>
-            <h1 className="text-3xl font-extrabold tracking-tight">InkCraft Service Centre</h1>
-            <div className="text-sm text-primary-foreground/90 mt-2 flex flex-wrap gap-2 items-center">
-              <span className="font-medium">12 Printer Lane, Tech Park, Mumbai 400001</span>
-              <span className="hidden md:inline">•</span>
-              <span className="font-medium">+91 98765 43210</span>
-              <span className="hidden md:inline">•</span>
-              <span className="font-medium">service@inkcraft.in</span>
+      {/* Cartridge World Brand Header */}
+      <header style={{ backgroundColor: "#FFD400" }} className="shadow-md">
+        <div className="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-3">
+          {/* Left: Janus logo + title */}
+          <div className="flex items-center gap-4">
+            <img
+              src="/janus-logo.png"
+              alt="Janus Imprints & Services"
+              className="h-16 w-auto object-contain drop-shadow-sm"
+            />
+            <div>
+              <h1 className="text-2xl font-extrabold tracking-tight text-black leading-tight">
+                Janus Imprints & Services
+              </h1>
+              <p className="text-sm font-semibold text-black/80 mt-0.5">
+                Cartridge World Franchise — Customer Intake System
+              </p>
             </div>
           </div>
-          <div className="text-left md:text-right">
-            <div className="text-3xl font-mono font-bold flex items-center justify-start md:justify-end gap-3 bg-primary-foreground/10 px-4 py-2 rounded-lg border border-primary-foreground/20">
-              <Clock className="w-7 h-7" />
-              {time.toLocaleTimeString("en-IN", { hour12: false })}
+
+          {/* Center: Clock */}
+          <div className="text-center">
+            <div className="text-3xl font-mono font-bold flex items-center justify-center gap-3 bg-black/10 px-4 py-2 rounded-lg border border-black/15">
+              <Clock className="w-6 h-6 text-black" />
+              <span className="text-black">{time.toLocaleTimeString("en-IN", { hour12: false })}</span>
             </div>
-            <div className="text-sm font-medium text-primary-foreground/90 mt-2">
+            <div className="text-xs font-semibold text-black/75 mt-1">
               {time.toLocaleDateString("en-IN", { weekday: "long", year: "numeric", month: "long", day: "numeric" })}
             </div>
           </div>
+
+          {/* Right: Cartridge World logo */}
+          <div className="flex items-center">
+            <img
+              src="/cw-logo.jpg"
+              alt="Cartridge World"
+              className="h-16 w-auto object-contain drop-shadow-sm rounded-lg"
+            />
+          </div>
         </div>
+
+        {/* Brand stripe */}
+        <div className="h-1" style={{ background: "linear-gradient(90deg, #0B4CC2 33%, #6CFF00 66%, #0B4CC2 100%)" }} />
       </header>
 
       {/* Login Card */}
       <div className="flex-1 flex items-center justify-center px-4 py-12">
         <div className="w-full max-w-sm">
-          <div className="bg-card border border-border rounded-2xl shadow-lg overflow-hidden">
-            <div className="bg-primary/5 border-b border-border px-8 py-6 text-center">
-              <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-primary/10 border border-primary/20 mb-3">
-                <LogIn className="w-7 h-7 text-primary" />
+          <div className="bg-card border border-border rounded-2xl shadow-lg overflow-hidden" style={{ borderTop: "4px solid #FFD400" }}>
+            <div className="bg-[#FFD400]/10 border-b border-border px-8 py-6 text-center">
+              <div
+                className="inline-flex items-center justify-center w-14 h-14 rounded-full mb-3"
+                style={{ backgroundColor: "#FFD400", border: "2px solid #0B4CC2" }}
+              >
+                <LogIn className="w-7 h-7" style={{ color: "#0B4CC2" }} />
               </div>
               <h2 className="text-xl font-bold text-foreground">Staff Login</h2>
               <p className="text-sm text-muted-foreground mt-1">Sign in to access the intake system</p>
@@ -118,7 +141,12 @@ export default function LoginPage() {
                 </div>
               )}
 
-              <Button type="submit" className="w-full font-semibold" disabled={loading}>
+              <Button
+                type="submit"
+                className="w-full font-semibold text-white"
+                style={{ backgroundColor: "#0B4CC2" }}
+                disabled={loading}
+              >
                 <LogIn className="w-4 h-4 mr-2" />
                 {loading ? "Signing in..." : "Sign In"}
               </Button>

@@ -16,29 +16,49 @@ export function Layout({ children }: { children: ReactNode }) {
 
   return (
     <div className="min-h-[100dvh] bg-background text-foreground flex flex-col font-sans">
-      {/* Deep Blue Header */}
-      <header className="bg-primary text-primary-foreground shadow-md">
-        <div className="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-          <div>
-            <h1 className="text-3xl font-extrabold tracking-tight">InkCraft Service Centre</h1>
-            <div className="text-sm text-primary-foreground/90 mt-2 flex flex-wrap gap-2 items-center">
-              <span className="font-medium">12 Printer Lane, Tech Park, Mumbai 400001</span>
-              <span className="hidden md:inline">•</span>
-              <span className="font-medium">+91 98765 43210</span>
-              <span className="hidden md:inline">•</span>
-              <span className="font-medium">service@inkcraft.in</span>
+      {/* Cartridge World Brand Header */}
+      <header style={{ backgroundColor: "#FFD400" }} className="shadow-md">
+        <div className="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-3">
+          {/* Left: Janus logo + title */}
+          <div className="flex items-center gap-4">
+            <img
+              src="/janus-logo.png"
+              alt="Janus Imprints & Services"
+              className="h-16 w-auto object-contain drop-shadow-sm"
+            />
+            <div>
+              <h1 className="text-2xl font-extrabold tracking-tight text-black leading-tight">
+                Janus Imprints & Services
+              </h1>
+              <p className="text-sm font-semibold text-black/80 mt-0.5">
+                Cartridge World Franchise — Customer Intake System
+              </p>
             </div>
           </div>
-          <div className="text-left md:text-right">
-            <div className="text-3xl font-mono font-bold flex items-center justify-start md:justify-end gap-3 bg-primary-foreground/10 px-4 py-2 rounded-lg border border-primary-foreground/20">
-              <Clock className="w-7 h-7" />
-              {time.toLocaleTimeString('en-IN', { hour12: false })}
+
+          {/* Center: Clock */}
+          <div className="text-center">
+            <div className="text-3xl font-mono font-bold flex items-center justify-center gap-3 bg-black/10 px-4 py-2 rounded-lg border border-black/15">
+              <Clock className="w-6 h-6 text-black" />
+              <span className="text-black">{time.toLocaleTimeString('en-IN', { hour12: false })}</span>
             </div>
-            <div className="text-sm font-medium text-primary-foreground/90 mt-2">
+            <div className="text-xs font-semibold text-black/75 mt-1">
               {time.toLocaleDateString('en-IN', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
             </div>
           </div>
+
+          {/* Right: Cartridge World logo */}
+          <div className="flex items-center">
+            <img
+              src="/cw-logo.jpg"
+              alt="Cartridge World"
+              className="h-16 w-auto object-contain drop-shadow-sm rounded-lg"
+            />
+          </div>
         </div>
+
+        {/* Yellow bottom stripe */}
+        <div className="h-1" style={{ background: "linear-gradient(90deg, #0B4CC2 33%, #6CFF00 66%, #0B4CC2 100%)" }} />
       </header>
 
       {/* Navigation */}
@@ -50,7 +70,7 @@ export function Layout({ children }: { children: ReactNode }) {
                 href="/"
                 className={`inline-flex items-center px-2 pt-1 border-b-2 text-sm font-semibold transition-colors ${
                   location === "/"
-                    ? "border-primary text-primary"
+                    ? "border-[#FFD400] text-[#0B4CC2]"
                     : "border-transparent text-muted-foreground hover:text-foreground hover:border-border"
                 }`}
               >
@@ -61,7 +81,7 @@ export function Layout({ children }: { children: ReactNode }) {
                 href="/dashboard"
                 className={`inline-flex items-center px-2 pt-1 border-b-2 text-sm font-semibold transition-colors ${
                   location === "/dashboard"
-                    ? "border-primary text-primary"
+                    ? "border-[#FFD400] text-[#0B4CC2]"
                     : "border-transparent text-muted-foreground hover:text-foreground hover:border-border"
                 }`}
               >

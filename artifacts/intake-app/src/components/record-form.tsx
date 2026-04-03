@@ -112,7 +112,6 @@ export function RecordForm({ initialValues, onSubmit, isSubmitting }: RecordForm
       }
     };
     
-    // Only lookup if it's a new record creation (no initial id implying an edit)
     if (!initialValues?.firstName) {
       handleLookup();
     }
@@ -123,10 +122,10 @@ export function RecordForm({ initialValues, onSubmit, isSubmitting }: RecordForm
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         
         {/* Customer Details */}
-        <Card className="shadow-sm border-border">
-          <CardHeader className="bg-muted/50 pb-4 border-b">
+        <Card className="shadow-sm border-border rounded-xl cw-card-accent" style={{ boxShadow: "0 2px 12px rgba(11,76,194,0.07)" }}>
+          <CardHeader className="pb-4 border-b" style={{ backgroundColor: "#FFF9E0" }}>
             <CardTitle className="text-lg flex items-center gap-2">
-              <User className="w-5 h-5 text-primary" />
+              <User className="w-5 h-5" style={{ color: "#0B4CC2" }} />
               Customer Details
             </CardTitle>
           </CardHeader>
@@ -185,10 +184,10 @@ export function RecordForm({ initialValues, onSubmit, isSubmitting }: RecordForm
 
         <div className="space-y-6">
           {/* Service Details */}
-          <Card className="shadow-sm border-border">
-            <CardHeader className="bg-muted/50 pb-4 border-b">
+          <Card className="shadow-sm border-border rounded-xl cw-card-accent" style={{ boxShadow: "0 2px 12px rgba(11,76,194,0.07)" }}>
+            <CardHeader className="pb-4 border-b" style={{ backgroundColor: "#FFF9E0" }}>
               <CardTitle className="text-lg flex items-center gap-2">
-                <Wrench className="w-5 h-5 text-primary" />
+                <Wrench className="w-5 h-5" style={{ color: "#0B4CC2" }} />
                 Service Details
               </CardTitle>
             </CardHeader>
@@ -207,7 +206,7 @@ export function RecordForm({ initialValues, onSubmit, isSubmitting }: RecordForm
               </div>
 
               {watchServiceType === "Computer/Laptop Repair" && (
-                <div className="space-y-2 p-4 bg-muted rounded-md border border-border animate-in fade-in slide-in-from-top-4">
+                <div className="space-y-2 p-4 rounded-md border border-[#FFD400] bg-[#FFF9E0] animate-in fade-in slide-in-from-top-4">
                   <Label>Device Serial Number <span className="text-destructive">*</span></Label>
                   <Input {...form.register("deviceSerialNumber")} placeholder="Enter serial number" />
                   {form.formState.errors.deviceSerialNumber && <p className="text-xs text-destructive">{form.formState.errors.deviceSerialNumber.message}</p>}
@@ -217,10 +216,10 @@ export function RecordForm({ initialValues, onSubmit, isSubmitting }: RecordForm
           </Card>
 
           {/* Printer Details */}
-          <Card className="shadow-sm border-border">
-            <CardHeader className="bg-muted/50 pb-4 border-b">
+          <Card className="shadow-sm border-border rounded-xl cw-card-accent" style={{ boxShadow: "0 2px 12px rgba(11,76,194,0.07)" }}>
+            <CardHeader className="pb-4 border-b" style={{ backgroundColor: "#FFF9E0" }}>
               <CardTitle className="text-lg flex items-center gap-2">
-                <Printer className="w-5 h-5 text-primary" />
+                <Printer className="w-5 h-5" style={{ color: "#0B4CC2" }} />
                 Device/Printer Details
               </CardTitle>
             </CardHeader>
@@ -248,11 +247,11 @@ export function RecordForm({ initialValues, onSubmit, isSubmitting }: RecordForm
           </Card>
         </div>
 
-        {/* Additional Details */}
-        <Card className="shadow-sm border-border lg:col-span-2">
-          <CardHeader className="bg-muted/50 pb-4 border-b">
+        {/* Payment & Time */}
+        <Card className="shadow-sm border-border rounded-xl cw-card-accent lg:col-span-2" style={{ boxShadow: "0 2px 12px rgba(11,76,194,0.07)" }}>
+          <CardHeader className="pb-4 border-b" style={{ backgroundColor: "#FFF9E0" }}>
             <CardTitle className="text-lg flex items-center gap-2">
-              <Clock className="w-5 h-5 text-primary" />
+              <Clock className="w-5 h-5" style={{ color: "#0B4CC2" }} />
               Payment & Time
             </CardTitle>
           </CardHeader>
@@ -274,7 +273,7 @@ export function RecordForm({ initialValues, onSubmit, isSubmitting }: RecordForm
             </div>
             
             <div className="space-y-4">
-              <div className="grid grid-cols-2 gap-4 p-4 border rounded-md bg-muted/30">
+              <div className="grid grid-cols-2 gap-4 p-4 border rounded-md" style={{ backgroundColor: "#FFF9E0", borderColor: "#FFD400" }}>
                 <div className="space-y-2">
                   <Label>Service Date</Label>
                   <Input type="date" {...form.register("serviceDate")} />
@@ -291,13 +290,14 @@ export function RecordForm({ initialValues, onSubmit, isSubmitting }: RecordForm
         </Card>
       </div>
 
-      <div className="flex justify-end gap-4 mt-8 sticky bottom-4 bg-background p-4 border rounded-lg shadow-lg">
+      <div className="flex justify-end gap-4 mt-8 sticky bottom-4 bg-background p-4 border rounded-lg shadow-lg" style={{ borderColor: "#FFD400", borderWidth: "1px" }}>
         <Button 
           type="button" 
           variant="outline" 
           onClick={() => form.reset()}
           disabled={isSubmitting}
-          className="w-32"
+          className="w-32 font-semibold"
+          style={{ backgroundColor: "#FFD400", color: "#000", borderColor: "#FFD400" }}
         >
           <RotateCcw className="w-4 h-4 mr-2" />
           Reset
@@ -305,7 +305,8 @@ export function RecordForm({ initialValues, onSubmit, isSubmitting }: RecordForm
         <Button 
           type="submit" 
           disabled={isSubmitting}
-          className="w-48 text-base font-semibold shadow-md"
+          className="w-48 text-base font-semibold shadow-md text-white"
+          style={{ backgroundColor: "#0B4CC2" }}
         >
           <Save className="w-5 h-5 mr-2" />
           {isSubmitting ? "Saving..." : "Save Entry"}
