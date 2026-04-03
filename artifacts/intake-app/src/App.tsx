@@ -1,9 +1,8 @@
-import { Switch, Route, Router as WouterRouter } from "wouter";
+import { Switch, Route, Router as WouterRouter, Redirect } from "wouter";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { AuthProvider, useAuth } from "@/context/auth-context";
-import NotFound from "@/pages/not-found";
 import LoginPage from "@/pages/login";
 import IntakeFormPage from "@/pages/intake-form";
 import DashboardPage from "@/pages/dashboard";
@@ -23,7 +22,9 @@ function ProtectedRouter() {
       <Route path="/" component={IntakeFormPage} />
       <Route path="/dashboard" component={DashboardPage} />
       <Route path="/edit/:id" component={EditRecordPage} />
-      <Route component={NotFound} />
+      <Route>
+        <Redirect to="/" />
+      </Route>
     </Switch>
   );
 }

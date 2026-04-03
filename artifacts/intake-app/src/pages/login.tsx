@@ -5,9 +5,11 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Clock, Eye, EyeOff, LogIn } from "lucide-react";
 import { useEffect } from "react";
+import { useLocation } from "wouter";
 
 export default function LoginPage() {
   const { login } = useAuth();
+  const [, navigate] = useLocation();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -27,10 +29,12 @@ export default function LoginPage() {
 
     setTimeout(() => {
       const ok = login(username.trim(), password);
-      if (!ok) {
+      if (ok) {
+        navigate("/");
+      } else {
         setError("Invalid username or password. Please try again.");
+        setLoading(false);
       }
-      setLoading(false);
     }, 400);
   }
 
