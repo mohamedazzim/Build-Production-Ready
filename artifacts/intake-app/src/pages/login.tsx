@@ -77,7 +77,7 @@ export default function LoginPage() {
               src="/cw-logo.jpg"
               alt="Cartridge World"
               className="object-contain drop-shadow-sm rounded-lg"
-              style={{ height: "64px", width: "82px" }}
+              style={{ height: "64px", width: "94px" }}
             />
           </div>
         </div>
