@@ -60,7 +60,7 @@ export default function LoginPage() {
           <div className="text-center">
             <div className="text-3xl font-mono font-bold flex items-center justify-center gap-3 bg-black/10 px-4 py-2 rounded-lg border border-black/15">
               <Clock className="w-6 h-6 text-black" />
-              <span className="text-black">{time.toLocaleTimeString("en-IN", { hour12: false })}</span>
+              <span className="text-black">{time.toLocaleTimeString("en-IN", { hour12: true })}</span>
             </div>
             <div className="text-xs font-semibold text-black/75 mt-1">
               {time.toLocaleDateString("en-IN", { weekday: "long", year: "numeric", month: "long", day: "numeric" })}
