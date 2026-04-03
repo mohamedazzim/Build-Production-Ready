@@ -52,7 +52,8 @@ export function Layout({ children }: { children: ReactNode }) {
             <img
               src="/cw-logo.jpg"
               alt="Cartridge World"
-              className="h-16 w-auto object-contain drop-shadow-sm rounded-lg"
+              className="object-contain drop-shadow-sm rounded-lg"
+              style={{ height: "64px", width: "82px" }}
             />
           </div>
         </div>
